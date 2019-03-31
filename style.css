@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --tableWidth: 800px;
+    --tableHeight: 500px;
+    --tableColor: #444;
+
+    --paddleWidth: 25px;
+    --paddleHeight: 80px;
+    --paddleColor: limegreen;
+
+    --ballWidth: 30px;
+    --ballHeight: 30px;
+    --ballColor: coral;
+
+    --positionBallLeft: 105px;
+    --positionBallRight: 665px;
+
+    --positionFromEdge: 80px;
+    --animationTime: 8s;
+}
+
+body {
+    overflow: hidden;
+}
+
+.table,
+.player,
+.computer,
+.ball,
+.result {
+    position: absolute;
+}
+
+.table {
+    width: var(--tableWidth);
+    height: var(--tableHeight);
+    background-color: var(--tableColor);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.ball {
+    width: var(--ballWidth);
+    height: var(--ballHeight);
+    background-color: var(--ballColor);
+    top: calc(50% - var(--ballHeight)/2);
+    left: calc(50% - var(--ballWidth)/2);
+    border-radius: 50%;
+    animation: ballGame 8s linear both;
+}
+
+.player {
+    width: var(--paddleWidth);
+    height: var(--paddleHeight);
+    background-color: var(--paddleColor);
+    /* top: calc(50% - var(--paddleHeight)/2); */
+    left: var(--positionFromEdge);
+    top: 50%;
+    transform: translateY(-50%);
+    animation: playerGame 8s linear both;
+}
+
+.computer {
+    width: var(--paddleWidth);
+    height: var(--paddleHeight);
+    background-color: var(--paddleColor);
+    /* top: calc(50% - var(--paddleHeight)/2); */
+    right: var(--positionFromEdge);
+    top: 50%;
+    transform: translateY(-50%);
+    animation: computerGame 8s linear both;
+}
+
+.result {
+    width: 100%;
+    left: 0;
+    top: 5%;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+    transform: scale(0);
+    animation: message 1s 8s linear both;
+    /* animation: shakes 2s 9s linear infinite; */
+}
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+    width: 100px;
+    height: 50px;
+    background-color: green;
+    border-radius: 10px;
+    color: cadetblue;
+    border: 4px solid cadetblue;
+    background-color: white;
+}
+
+.game i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.game:hover {
+    background-color: cadetblue;
+}
+
+.game:hover>i {
+    color: white;
+}
+
+
+@keyframes ballGame {
+    0% {
+        top: calc(50% - var(--ballHeight)/2);
+        left: calc(50% - var(--ballWidth)/2);
+    }
+
+    8% {
+        left: var(--positionBallRight);
+        top: 380px;
+    }
+
+    16% {
+        left: 350px;
+        top: 470px;
+    }
+
+    22% {
+        left: var(--positionBallLeft);
+        top: 350px;
+    }
+
+    36% {
+        left: var(--positionBallRight);
+        top: 250px;
+    }
+
+    50% {
+        left: var(--positionBallLeft);
+        top: 250px;
+    }
+
+    64% {
+        left: var(--positionBallRight);
+        top: 250px;
+    }
+
+    74% {
+        left: 300px;
+        top: 0;
+    }
+
+    80% {
+        left: var(--positionBallLeft);
+        top: 150px;
+    }
+
+    95% {
+        left: 680px;
+        top: 470px;
+    }
+
+    100% {
+        left: 850px;
+        top: 400px;
+    }
+}
+
+@keyframes playerGame {
+    0% {
+        top: 260px;
+    }
+
+    8% {
+        top: 360px;
+    }
+
+    16% {
+        top: 460px;
+    }
+
+    22% {
+
+        top: 380px;
+    }
+
+    36% {
+
+        top: 180px;
+    }
+
+    50% {
+
+        top: 300px;
+    }
+
+    64% {
+
+        top: 220px;
+    }
+
+    74% {
+        top: 80px;
+    }
+
+    80% {
+
+        top: 180px;
+    }
+
+    100% {
+        top: 400px;
+    }
+}
+
+@keyframes computerGame {
+    0% {
+        top: 120px;
+    }
+
+    8% {
+        top: 360px;
+    }
+
+    16% {
+        top: 460px;
+    }
+
+    22% {
+
+        top: 350px;
+    }
+
+    36% {
+
+        top: 250px;
+    }
+
+    50% {
+
+        top: 420px;
+    }
+
+    64% {
+
+        top: 260px;
+    }
+
+    74% {
+        top: 100px;
+    }
+
+    80% {
+
+        top: 220px;
+    }
+
+    100% {
+        top: 450px;
+    }
+}
+
+@keyframes message {
+    100% {
+        transform: scale(1);
+    }
+}
